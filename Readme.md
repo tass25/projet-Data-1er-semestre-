@@ -90,4 +90,4 @@ Le succès sera mesuré par :
 
 ## 🔗 Liens Utiles
 
-- [Dataset ](https://archive.ics.uci.edu/dataset/45/heart+disease)
+- Dataset : https://archive.ics.uci.edu/dataset/45/heart+disease
