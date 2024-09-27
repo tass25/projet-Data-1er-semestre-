@@ -2,7 +2,7 @@
 
 Bienvenue dans le projet **Heart Attack Analysis & Prediction** ! Ce projet vise à développer un modèle de classification capable de prédire la probabilité d'une crise cardiaque chez un patient en se basant sur des paramètres cliniques. 
 
-## 📚 Contexte
+## Contexte 📚
 
 La maladie cardiaque représente une préoccupation majeure de santé publique à l'échelle mondiale. La détection précoce et la prévention sont essentielles pour améliorer les résultats pour les patients. Ce projet utilise l'apprentissage automatique pour identifier les individus à risque.
 
