@@ -12,7 +12,7 @@ Développer un modèle fiable capable de prédire le risque de crise cardiaque, 
 
 ## 🛠️ Description du Modèle
 
-Le modèle est basé sur des techniques d'apprentissage automatique et sera déployé sur le cloud via **Streamlit**. Nous allons utiliser **quatre modèles différents** pour les comparer et déterminer le meilleur en fonction de leurs performances.
+Le modèle est basé sur des techniques d'apprentissage automatique et sera déployé sur le cloud via **Streamlit**. Nous allons utiliser **trois modèles différents** pour les comparer et déterminer le meilleur en fonction de leurs performances.
 
 ## 🔍 Spécifications Fonctionnelles
 
