@@ -33,15 +33,16 @@ with st.container():
                 if outcome == 0:
                     st.subheader('Anna says,')
                     st.title("Great! This patient is unlikely to get a heart attack!")
-                    st.markdown("![Alt Text](https://bit.ly/anna-good)")
+                    st.image("images/pic.png")
                 else:
                     st.subheader('Anna says,')
                     st.title("Oops! This patient has high risk of getting a heart attack!")
                     st.subheader('Please pay more attention.')
-                    st.markdown("![Alt Text](https://bit.ly/p-sick)")
+                    st.image("images/pic.png")
+ 
 
     with img_col:
-        st.markdown("![Alt Text](https://bit.ly/anna-form)")
+        st.image("images/pic.png")
         st.subheader("Hold on, Anna is learning about the data...")
 
 # CONTACT

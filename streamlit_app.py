@@ -21,7 +21,7 @@ if page == "Home":
         st.subheader("ETA predicts heart attack risk based on reported symptoms.")
 
     with col2:
-        st.markdown("![Alt Text](https://bit.ly/anna-find)")
+        st.image("images/pic.png")
 
     st.write("---")
 
