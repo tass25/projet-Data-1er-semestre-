@@ -18,5 +18,85 @@
         "chol": 200,
         "thalachh": 150,
         "prediction": 0
+    },
+    {
+        "thall": 1,
+        "caa": 1,
+        "cp": 1,
+        "oldpeak": 1.0,
+        "exng": 1,
+        "chol": 200,
+        "thalachh": 150,
+        "prediction": 0
+    },
+    {
+        "thall": 1,
+        "caa": 1,
+        "cp": 1,
+        "oldpeak": 1.2,
+        "exng": 1,
+        "chol": 200,
+        "thalachh": 150,
+        "prediction": 0
+    },
+    {
+        "thall": 1,
+        "caa": 2,
+        "cp": 2,
+        "oldpeak": 1.5,
+        "exng": 1,
+        "chol": 216,
+        "thalachh": 135,
+        "prediction": 0
+    },
+    {
+        "thall": 1,
+        "caa": 1,
+        "cp": 1,
+        "oldpeak": 1.0,
+        "exng": 1,
+        "chol": 200,
+        "thalachh": 150,
+        "prediction": 0
+    },
+    {
+        "thall": 1,
+        "caa": 2,
+        "cp": 2,
+        "oldpeak": 1.0,
+        "exng": 1,
+        "chol": 215,
+        "thalachh": 150,
+        "prediction": 0
+    },
+    {
+        "thall": 1,
+        "caa": 2,
+        "cp": 3,
+        "oldpeak": 1.0,
+        "exng": 1,
+        "chol": 229,
+        "thalachh": 150,
+        "prediction": 0
+    },
+    {
+        "thall": 1,
+        "caa": 2,
+        "cp": 3,
+        "oldpeak": 2.0,
+        "exng": 1,
+        "chol": 229,
+        "thalachh": 168,
+        "prediction": 0
+    },
+    {
+        "thall": 2,
+        "caa": 1,
+        "cp": 2,
+        "oldpeak": 1.2,
+        "exng": 1,
+        "chol": 250,
+        "thalachh": 160,
+        "prediction": 1
     }
 ]

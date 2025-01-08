@@ -1,67 +1,68 @@
 {
     "age": {
       "full_name": "Age",
-      "description": "The age of the patient in years.",
-      "possible_values": "Any positive integer value."
+      "description": "How old the person is.",
+      "possible_values": "Any positive number."
     },
     "sex": {
       "full_name": "Sex",
-      "description": "Sex of the patient. Possible values: '1' for Male, '0' for Female.",
+      "description": "The person's gender. '1' means male, '0' means female.",
       "possible_values": "'1' (Male), '0' (Female)"
     },
     "cp": {
       "full_name": "Chest Pain type",
-      "description": "The type of chest pain experienced by the patient. Possible values: 0 - typical angina, 1 - atypical angina, 2 - non-anginal pain, 3 - asymptomatic.",
+      "description": "What kind of chest pain the person felt. '0' means typical pain, '1' means unusual pain, '2' means pain not related to heart, '3' means no pain.",
       "possible_values": "0, 1, 2, 3"
     },
     "trtbps": {
       "full_name": "Resting blood pressure",
-      "description": "The resting blood pressure in mm Hg.",
-      "possible_values": "Any positive integer value."
+      "description": "The person's blood pressure when they are resting.",
+      "possible_values": "Any positive number."
     },
     "chol": {
       "full_name": "Cholesterol",
-      "description": "The cholesterol level in mg/dl.",
-      "possible_values": "Any positive integer value."
+      "description": "The amount of fat in the blood.",
+      "possible_values": "Any positive number."
     },
     "fbs": {
       "full_name": "Fasting blood sugar",
-      "description": "Whether fasting blood sugar is greater than 120 mg/dl. Possible values: '1' for Yes, '0' for No.",
+      "description": "Whether the person's blood sugar is more than 120 mg/dl after not eating for a while. '1' means yes, '0' means no.",
       "possible_values": "'1' (Yes), '0' (No)"
     },
     "restecg": {
       "full_name": "Resting Electrocardiographic Results",
-      "description": "The result of the resting electrocardiogram test. Possible values: 0 - normal, 1 - ST-T wave abnormality, 2 - left ventricular hypertrophy.",
+      "description": "The result of a test that checks the heart's electrical signals when resting. '0' means normal, '1' means there's an issue, '2' means the heart might have a problem.",
       "possible_values": "0, 1, 2"
     },
     "thalachh": {
       "full_name": "Maximum heart rate",
-      "description": "The maximum heart rate achieved by the patient.",
-      "possible_values": "Any positive integer value."
+      "description": "The highest heart rate the person reached during activity.",
+      "possible_values": "Any positive number."
     },
     "exng": {
       "full_name": "Exercise-induced angina",
-      "description": "Whether the patient has exercise-induced angina. Possible values: '1' for Yes, '0' for No.",
+      "description": "Whether the person gets chest pain while exercising. '1' means yes, '0' means no.",
       "possible_values": "'1' (Yes), '0' (No)"
     },
     "oldpeak": {
       "full_name": "Oldpeak",
-      "description": "The ST depression caused by activity compared to rest.",
-      "possible_values": "Any float value."
+      "description": "How much the heart's electrical signals change during activity compared to resting.",
+      "possible_values": "Any number."
     },
     "slp": {
       "full_name": "Slope of the peak exercise ST segment",
-      "description": "The slope of the peak exercise ST segment. Possible values: 0 - downsloping, 1 - flat, 2 - upsloping.",
+      "description": "How the heart's electrical signals change during exercise. '0' means the signals go down, '1' means they stay flat, '2' means they go up.",
       "possible_values": "0, 1, 2"
     },
     "caa": {
       "full_name": "Coronary Artery Anomaly",
-      "description": "The number of major vessels (0-3) colored by fluoroscopy.",
+      "description": "How many main blood vessels around the heart are blocked or narrowed. '0' means no problem, '1' means one vessel is affected, and so on.",
       "possible_values": "0, 1, 2, 3"
     },
     "thall": {
       "full_name": "Thalassemia",
-      "description": "The type of thalassemia. Possible values: 0 - normal, 1 - fixed defect, 2 - reversable defect.",
+      "description": "A type of blood cell problem. '0' means normal, '1' means permanent problem, '2' means problem could improve.",
       "possible_values": "0, 1, 2"
     }
   }
+  

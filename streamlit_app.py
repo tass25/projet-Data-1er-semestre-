@@ -131,10 +131,12 @@ features_values['thall'] = thall
 if st.button("Info: Thalassemia", key="thall_info"):
     st.session_state['focused_input'] = 'thall'
     display_variable_info('thall')
-
 # Prediction button
 if st.button('Predict'):
-    if any(value == 0 or value == 0.00 for value in features_values.values()):
+    if any(
+        (value == 0 or value == 0.00) and key != 'sex'  # Ignore sex being 0 (female)
+        for key, value in features_values.items()
+    ):
         st.warning('Please input all the details.')
     else:
         # Ensure the input only contains the features the model was trained on
