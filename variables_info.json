@@ -1,0 +1,67 @@
+{
+    "age": {
+      "full_name": "Age",
+      "description": "The age of the patient in years.",
+      "possible_values": "Any positive integer value."
+    },
+    "sex": {
+      "full_name": "Sex",
+      "description": "Sex of the patient. Possible values: '1' for Male, '0' for Female.",
+      "possible_values": "'1' (Male), '0' (Female)"
+    },
+    "cp": {
+      "full_name": "Chest Pain type",
+      "description": "The type of chest pain experienced by the patient. Possible values: 0 - typical angina, 1 - atypical angina, 2 - non-anginal pain, 3 - asymptomatic.",
+      "possible_values": "0, 1, 2, 3"
+    },
+    "trtbps": {
+      "full_name": "Resting blood pressure",
+      "description": "The resting blood pressure in mm Hg.",
+      "possible_values": "Any positive integer value."
+    },
+    "chol": {
+      "full_name": "Cholesterol",
+      "description": "The cholesterol level in mg/dl.",
+      "possible_values": "Any positive integer value."
+    },
+    "fbs": {
+      "full_name": "Fasting blood sugar",
+      "description": "Whether fasting blood sugar is greater than 120 mg/dl. Possible values: '1' for Yes, '0' for No.",
+      "possible_values": "'1' (Yes), '0' (No)"
+    },
+    "restecg": {
+      "full_name": "Resting Electrocardiographic Results",
+      "description": "The result of the resting electrocardiogram test. Possible values: 0 - normal, 1 - ST-T wave abnormality, 2 - left ventricular hypertrophy.",
+      "possible_values": "0, 1, 2"
+    },
+    "thalachh": {
+      "full_name": "Maximum heart rate",
+      "description": "The maximum heart rate achieved by the patient.",
+      "possible_values": "Any positive integer value."
+    },
+    "exng": {
+      "full_name": "Exercise-induced angina",
+      "description": "Whether the patient has exercise-induced angina. Possible values: '1' for Yes, '0' for No.",
+      "possible_values": "'1' (Yes), '0' (No)"
+    },
+    "oldpeak": {
+      "full_name": "Oldpeak",
+      "description": "The ST depression caused by activity compared to rest.",
+      "possible_values": "Any float value."
+    },
+    "slp": {
+      "full_name": "Slope of the peak exercise ST segment",
+      "description": "The slope of the peak exercise ST segment. Possible values: 0 - downsloping, 1 - flat, 2 - upsloping.",
+      "possible_values": "0, 1, 2"
+    },
+    "caa": {
+      "full_name": "Coronary Artery Anomaly",
+      "description": "The number of major vessels (0-3) colored by fluoroscopy.",
+      "possible_values": "0, 1, 2, 3"
+    },
+    "thall": {
+      "full_name": "Thalassemia",
+      "description": "The type of thalassemia. Possible values: 0 - normal, 1 - fixed defect, 2 - reversable defect.",
+      "possible_values": "0, 1, 2"
+    }
+  }

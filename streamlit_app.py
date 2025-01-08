@@ -1,85 +1,176 @@
-import pickle
+import json
+import xgboost
 import streamlit as st
 import pandas as pd
-import xgboost
 import numpy as np
+import os
 
+# Load the JSON file with variable descriptions
+with open('variables_info.json') as f:
+    variables_info = json.load(f)
+
+# Load the pre-trained XGBoost model
 loaded_model = xgboost.Booster()
 loaded_model.load_model('xgb_model.bin')
 
-
-# page title
+# Page title
 st.title('Heart Attack Prediction using ML')
 
-st.markdown(
-    """
-    <style>
-    .reportview-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .main .block-container {
-        flex: 1;
-        max-width: 800px;
-        padding-top: 5rem;
-        padding-right: 2rem;
-        padding-left: 2rem;
-        padding-bottom: 5rem;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
+# Sidebar for variable information
+st.sidebar.title("Variable Information")
 
-st.markdown(
-    f'<div style="display: flex; justify-content: center;"><img src="https://media1.tenor.com/m/8MimBCFmP3IAAAAd/heart-break-heart-attack.gif" width="200"></div>', 
-    unsafe_allow_html=True,
-)
+# Function to show information about each variable
+def display_variable_info(variable):
+    variable_data = variables_info.get(variable, None)
+    if variable_data:
+        st.sidebar.header(variable_data["full_name"])
+        st.sidebar.write(variable_data["description"])
+        st.sidebar.write("Possible values:")
+        st.sidebar.write(variable_data["possible_values"])
 
+# Initialize session state for focused input tracking
+if 'focused_input' not in st.session_state:
+    st.session_state['focused_input'] = None
 
-age = st.number_input('Enter age',step=1)
-sex = st.selectbox('Enter sex', ('Male', 'Female'))
+# Input collection and variable info display
+st.markdown("### Input patient details:")
+
+# Dictionary to store input values
+features_values = {}
+
+# Age
+age = st.slider('Enter Age', 1, 120, 30)
+features_values['age'] = age
+if st.button("Info: Age", key="age_info"):
+    st.session_state['focused_input'] = 'age'
+    display_variable_info('age')
+
+# Sex
+sex = st.selectbox('Enter Sex', ('Male', 'Female'))
 sex = 1 if sex == 'Male' else 0
-st.write("Chest Pain type \n\n Value 0: typical angina \n\n Value 1: atypical angina \n\n Value 2: non-anginal pain \n\n Value 3: asymptomatic trtbps : resting blood pressure (in mm Hg)")
-cp = st.selectbox('Enter Chest Pain type', (0,1,2,3))
-trtbps = st.number_input('Enter resting blood pressure value',step=1)
-chol = st.number_input('Enter cholestoral value(cholestoral in mg/dl fetched via BMI sensor)',step=1)
-fbs = st.selectbox('Is fasting blood sugar > 120 mg/dl', ('Yes', 'No'))
+features_values['sex'] = sex
+if st.button("Info: Sex", key="sex_info"):
+    st.session_state['focused_input'] = 'sex'
+    display_variable_info('sex')
+
+# Chest Pain Type
+cp = st.selectbox('Enter Chest Pain Type', (0, 1, 2, 3))
+features_values['cp'] = cp
+if st.button("Info: Chest Pain Type", key="cp_info"):
+    st.session_state['focused_input'] = 'cp'
+    display_variable_info('cp')
+
+# Resting Blood Pressure
+trtbps = st.slider('Enter Resting Blood Pressure (mm Hg)', 90, 200, 120)
+features_values['trtbps'] = trtbps
+if st.button("Info: Resting BP", key="bp_info"):
+    st.session_state['focused_input'] = 'trtbps'
+    display_variable_info('trtbps')
+
+# Cholesterol
+chol = st.slider('Enter Cholesterol (mg/dl)', 100, 600, 200)
+features_values['chol'] = chol
+if st.button("Info: Cholesterol", key="chol_info"):
+    st.session_state['focused_input'] = 'chol'
+    display_variable_info('chol')
+
+# Fasting Blood Sugar
+fbs = st.selectbox('Is fasting blood sugar > 120 mg/dl?', ('Yes', 'No'))
 fbs = 1 if fbs == 'Yes' else 0
-st.write("Resting Electrocardiographic Results \n\nValue 0: normal \n\n Value 1: having ST-T wave abnormality (T wave inversions and/or ST elevation or depression of > 0.05 mV) \n\nValue 2: showing probable or definite left ventricular hypertrophy by Estes' criteria thalach : maximum heart rate achieved)")
-restecg = st.selectbox('Enter Resting Electrocardiographic Results value', (0,1, 2))
-thalachh = st.number_input("The person's maximum heart rate achieved",step=1)
-exng=st.selectbox('Enter exercise induced angina value', ('Yes', 'No'))
+features_values['fbs'] = fbs
+if st.button("Info: FBS", key="fbs_info"):
+    st.session_state['focused_input'] = 'fbs'
+    display_variable_info('fbs')
+
+# Resting ECG
+restecg = st.selectbox('Enter Resting ECG Result', (0, 1, 2))
+features_values['restecg'] = restecg
+if st.button("Info: Resting ECG", key="ecg_info"):
+    st.session_state['focused_input'] = 'restecg'
+    display_variable_info('restecg')
+
+# Maximum Heart Rate
+thalachh = st.slider('Enter Maximum Heart Rate', 50, 220, 150)
+features_values['thalachh'] = thalachh
+if st.button("Info: Max Heart Rate", key="heart_rate_info"):
+    st.session_state['focused_input'] = 'thalachh'
+    display_variable_info('thalachh')
+
+# Exercise-induced Angina
+exng = st.selectbox('Exercise-induced Angina', ('Yes', 'No'))
 exng = 1 if exng == 'Yes' else 0
-oldpeak = st.number_input('Enter oldpeak(ST depression caused by activity compared to rest) value')
-st.write("the slope of the peak exercise ST segment — \n\n 0: downsloping; \n\n 1: flat; \n\n 2: upsloping")
-slp = st.selectbox('Enter slope of the peak exercise ST segment value',(0,1,2))
-caa = st.selectbox('Enter caa(coronary artery anomaly) value(number of major vessels (0-3))',(0,1,2,3))
-thall = st.selectbox('Enter thalassemia value',(0,1,2,3))
+features_values['exng'] = exng
+if st.button("Info: Exercise-induced Angina", key="exng_info"):
+    st.session_state['focused_input'] = 'exng'
+    display_variable_info('exng')
 
+# Oldpeak
+oldpeak = st.slider('Enter Oldpeak value', 0.0, 6.0, 1.0, 0.1)
+features_values['oldpeak'] = oldpeak
+if st.button("Info: Oldpeak", key="oldpeak_info"):
+    st.session_state['focused_input'] = 'oldpeak'
+    display_variable_info('oldpeak')
 
-features_values={'age':age,'trtbps':trtbps,'chol':chol,'thalachh':thalachh,'oldpeak':oldpeak}
+# Slope of Peak Exercise ST Segment
+slp = st.selectbox('Enter Slope of Peak Exercise ST Segment', (0, 1, 2))
+features_values['slp'] = slp
+if st.button("Info: Slope", key="slope_info"):
+    st.session_state['focused_input'] = 'slp'
+    display_variable_info('slp')
 
+# Coronary Artery Anomaly
+caa = st.selectbox('Enter Coronary Artery Anomaly', (0, 1, 2, 3))
+features_values['caa'] = caa
+if st.button("Info: CAA", key="caa_info"):
+    st.session_state['focused_input'] = 'caa'
+    display_variable_info('caa')
+
+# Thalassemia
+thall = st.selectbox('Enter Thalassemia', (0, 1, 2))
+features_values['thall'] = thall
+if st.button("Info: Thalassemia", key="thall_info"):
+    st.session_state['focused_input'] = 'thall'
+    display_variable_info('thall')
+
+# Prediction button
 if st.button('Predict'):
     if any(value == 0 or value == 0.00 for value in features_values.values()):
         st.warning('Please input all the details.')
     else:
-        data_1 = pd.DataFrame({'thall': [thall],
-                'caa': [caa],
-                'cp': [cp],
-                'oldpeak': [oldpeak],
-                'exng': [exng],
-                'chol': [chol],
-                'thalachh': [thalachh]
-            })
+        # Ensure the input only contains the features the model was trained on
+        trained_features = ['thall', 'caa', 'cp', 'oldpeak', 'exng', 'chol', 'thalachh']
+        filtered_input = {key: features_values[key] for key in trained_features}
 
-        dtest = xgboost.DMatrix(data_1)
+        # Check if the JSON file exists and is properly formatted
+        if os.path.exists('new_data.json'):
+            try:
+                # Load existing data
+                with open('new_data.json', 'r') as json_file:
+                    data = json.load(json_file)
+                # Ensure it's a list
+                if not isinstance(data, list):
+                    data = []  # Reset if not a list
+            except json.JSONDecodeError:
+                data = []  # Reset if file contents are invalid
+        else:
+            data = []  # Initialize a new list if the file doesn't exist
 
+        # Append the new input to the list
+        data.append(filtered_input)
+
+        # Save the updated list back to the JSON file
+        with open('new_data.json', 'w') as json_file:
+            json.dump(data, json_file, indent=4)
+
+        # Convert the filtered input to a DataFrame
+        input_df = pd.DataFrame([filtered_input])
+
+        # Make prediction
+        dtest = xgboost.DMatrix(input_df)
         prediction = loaded_model.predict(dtest)
         threshold = 0.5
         prediction = np.where(prediction >= threshold, 1, 0)
-        #st.write(prediction)
+
         if prediction == 0:
             st.markdown("<h2 style='text-align: center; color: green;'>Patient has no risk of Heart Attack</h2>", unsafe_allow_html=True)
         else:
