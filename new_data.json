@@ -6,6 +6,17 @@
         "oldpeak": 1.0,
         "exng": 1,
         "chol": 200,
-        "thalachh": 150
+        "thalachh": 150,
+        "prediction": 0
+    },
+    {
+        "thall": 1,
+        "caa": 2,
+        "cp": 2,
+        "oldpeak": 1.0,
+        "exng": 1,
+        "chol": 200,
+        "thalachh": 150,
+        "prediction": 0
     }
 ]

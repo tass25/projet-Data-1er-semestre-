@@ -141,6 +141,16 @@ if st.button('Predict'):
         trained_features = ['thall', 'caa', 'cp', 'oldpeak', 'exng', 'chol', 'thalachh']
         filtered_input = {key: features_values[key] for key in trained_features}
 
+        # Make prediction
+        input_df = pd.DataFrame([filtered_input])
+        dtest = xgboost.DMatrix(input_df)
+        prediction = loaded_model.predict(dtest)
+        threshold = 0.5
+        prediction = np.where(prediction >= threshold, 1, 0)
+
+        # Add the prediction field to the input
+        filtered_input['prediction'] = int(prediction[0])
+
         # Check if the JSON file exists and is properly formatted
         if os.path.exists('new_data.json'):
             try:
@@ -162,15 +172,7 @@ if st.button('Predict'):
         with open('new_data.json', 'w') as json_file:
             json.dump(data, json_file, indent=4)
 
-        # Convert the filtered input to a DataFrame
-        input_df = pd.DataFrame([filtered_input])
-
-        # Make prediction
-        dtest = xgboost.DMatrix(input_df)
-        prediction = loaded_model.predict(dtest)
-        threshold = 0.5
-        prediction = np.where(prediction >= threshold, 1, 0)
-
+        # Display prediction result
         if prediction == 0:
             st.markdown("<h2 style='text-align: center; color: green;'>Patient has no risk of Heart Attack</h2>", unsafe_allow_html=True)
         else:
