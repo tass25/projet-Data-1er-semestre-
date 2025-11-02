@@ -18,10 +18,10 @@ Le modèle est basé sur des techniques d'apprentissage automatique et sera dép
 
 Voici un aperçu de l’interface Streamlit :
 
-![Aperçu interface 1](SH1.png)
+![Aperçu interface 1](SH1.jpeg)
 *Figure 1 – Interface de l’application*
 
-![Aperçu interface 2](SH2.png)
+![Aperçu interface 2](SH2.jpeg)
 *Figure 2 – Interface de l’application *
 
 ## 🔍 Spécifications Fonctionnelles
