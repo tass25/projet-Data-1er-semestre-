@@ -14,6 +14,16 @@ Développer un modèle fiable capable de prédire le risque de crise cardiaque, 
 
 Le modèle est basé sur des techniques d'apprentissage automatique et sera déployé sur le cloud via **Streamlit**. Nous allons utiliser **trois modèles différents** pour les comparer et déterminer le meilleur en fonction de leurs performances.
 
+## 🖼️ Aperçu de l’Application
+
+Voici un aperçu de l’interface Streamlit :
+
+![Aperçu interface 1](SH1.png)
+*Figure 1 – Interface de l’application*
+
+![Aperçu interface 2](SH2.png)
+*Figure 2 – Interface de l’application *
+
 ## 🔍 Spécifications Fonctionnelles
 
 ### **Entrées**
